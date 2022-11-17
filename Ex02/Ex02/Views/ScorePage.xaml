@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ex02.Views.ScorePage" NavigationPage.HasNavigationBar="False">
+    <StackLayout Margin="8,16,0,0">
+        <Label x:Name="lblName" FontSize="Large" />
+        <ListView x:Name="lvwScores" Margin="8,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="35" />
+                                <ColumnDefinition Width="35" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Spacing="0" Margin="0,0,4,0">
+                                <Label Text="{Binding ScorePercentage}" TextColor="Black" />
+                                <Label Text="%" TextColor="Black" />
+                            </StackLayout>
+                            <BoxView Grid.Column="1" VerticalOptions="Center"
+                                      Color="#eeeeee" HeightRequest="10"
+                                      HorizontalOptions="Start" WidthRequest="100" />
+                            <BoxView Grid.Column="1" VerticalOptions="Center"
+                                      Color="{Binding Color}" HeightRequest="10"
+                                      HorizontalOptions="Start" WidthRequest="{Binding ScorePercentage}"/>
+                            <Button Text="-" Clicked="ScoreMinus_Clicked" Grid.Column="2" HeightRequest="35" VerticalOptions="Center" />
+                            <Button Text="+" Clicked="ScorePlus_Cicked" Grid.Column="3" HeightRequest="35" VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnBackToDetails" Text="Back to details" />
+            <Button x:Name="btnBackToMain" Text="Back to area list" Grid.Column="1" />
+        </Grid>
+    </StackLayout>
+</ContentPage>
